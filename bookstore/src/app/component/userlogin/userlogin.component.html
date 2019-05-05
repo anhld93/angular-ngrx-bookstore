@@ -1,0 +1,47 @@
+<form (submit)="userLogin()" action="#" class="container">
+  <mat-card class="card-container">
+    <mat-card-header class="login-form-header-title p-b-26">
+      <mat-card-title class="login-form-title">Welcome to book store</mat-card-title>
+      <span class="login-form-title">
+        <img src="../../../assets/img/books.jpg" />
+      </span>
+    </mat-card-header>
+
+    <mat-card-content>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="">
+                <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="">
+                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="wrap-login-form-btn">
+        <div class="login-form-bgbtn"></div>
+        <button type="submit" class="login-from-btn"
+                value="Search" name="submit">Login</button>
+      </div>
+    </mat-card-actions>
+
+
+    <mat-card-content style="text-align: center;padding-top: 50px">
+      <span class="txt1">Don’t have an account?</span>
+
+      <a class="txt2" href="#">Sign Up</a>
+    </mat-card-content>
+
+  </mat-card>
+  <!--<input type="submit" style="display: none" (keyup.enter)="userLogin()">-->
+</form>
