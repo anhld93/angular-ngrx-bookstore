@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../models/User";
 import {Store} from "@ngrx/store";
 
-import * as UserStore from '../../store/index';
+import * as UserStore from '../../root_store/user-store/index';
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
+import * as BookStore from "../../root_store/book-store";
 
 @Component({
   selector: 'app-userlogin',
@@ -18,11 +19,11 @@ export class UserloginComponent implements OnInit {
   userData: User;
   showSpinner: boolean;
 
-  constructor(private store: Store<UserStore.State>,
+  constructor(private store: Store<UserStore.UserStoreState.UserState>,
               private router: Router) { }
 
   userLogin() {
-    this.store.dispatch(new UserStore.FetchUser({
+    this.store.dispatch(new UserStore.UserStoreActions.FetchUser({
       userName: this.username,
       password: this.password
     }))
@@ -38,7 +39,7 @@ export class UserloginComponent implements OnInit {
     // });
 
 
-    this.store.select(UserStore.getUserStateData).subscribe((state) => {
+    this.store.select(UserStore.UserStoreSelectors.getUserStateData).subscribe((state) => {
       if (Object.keys(state).length !== 0) {
         this.userData = new User(state);
         if(this.userData.userName) {
@@ -50,7 +51,7 @@ export class UserloginComponent implements OnInit {
           //   this.router.navigate(['book'])
           // }, 500)
 
-          this.router.navigate(['book'])
+          this.router.navigate(['book']);
         } else {
           console.log("Nothing happen");
           // alert("Invalid Login");

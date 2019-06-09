@@ -1,16 +1,12 @@
-import * as userActions from '../actions/user.action'
+import * as userActions from './user.action'
+import {initialState, UserState} from "./user.state";
+import {ActionReducerMap} from "@ngrx/store";
+import {State} from "./user.selector";
 
-export interface UserState {
-  data: object;
-  loaded: boolean;
-  loading: boolean;
-}
 
-export const initialState: UserState = {
-  data: {},
-  loaded: false,
-  loading: false
-};
+// export const reducers: ActionReducerMap<State> = {
+//   userState: this.reducer
+// };
 
 export function reducer(state = initialState, action: userActions.UserActions) {
   switch (action.type) {

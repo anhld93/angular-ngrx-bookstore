@@ -21,7 +21,7 @@ export class UserService {
     userName: 'LeAnh',
     role: 'ADMIN',
     token: '123456'
-  }
+  };
 
   userLogin(payload: any): Observable<any> {
     return this.httpClient.post(`http://localhost:8080/auth/login`, {
